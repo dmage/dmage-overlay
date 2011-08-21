@@ -1,0 +1,24 @@
+#!/sbin/runscript
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+GITORIOUS_DIR="/var/lib/gitorious"
+GIT_USER="git"
+
+depend() {
+	need stompserver
+}
+
+start() {
+	ebegin "Starting gitorious-poller"
+	cd "${GITORIOUS_DIR}"
+	su - ${GIT_USER} -c "env RAILS_ENV=production /usr/bin/bundle exec ${GITORIOUS_DIR}/script/poller start"
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping gitorious-poller"
+	su - ${GIT_USER} -c "env RAILS_ENV=production /usr/bin/bundle exec ${GITORIOUS_DIR}/script/poller stop"
+	eend $?
+}
