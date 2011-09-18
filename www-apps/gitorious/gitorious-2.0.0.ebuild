@@ -12,7 +12,7 @@ SRC_URI="http://gitorious.org/${PN}/mainline/archive-tarball/v${PV} -> ${P}.tar.
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS=""
 IUSE="ssl"
 
 DEPEND="sys-apps/findutils"
