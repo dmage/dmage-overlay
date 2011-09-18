@@ -34,8 +34,8 @@ pkg_setup() {
 }
 
 src_install() {
-	doinitd autoconfig
-	newinitd spind.init spind
+	doconfd conf.d/*
+	doinitd init.d/*
 	dosbin net-setup spind
 	into /
 	dobin bashlogin
